@@ -11,4 +11,9 @@ clambc_SOURCES = \
 AM_CFLAGS=@WERR_CFLAGS@ @SSL_CPPFLAGS@ @JSON_CPPFLAGS@ @PCRE_CPPFLAGS@
 AM_CPPFLAGS = -I$(top_srcdir) -I$(top_srcdir)/shared -I$(top_srcdir)/libclamav
 LIBS = $(top_builddir)/libclamav/libclamav.la @THREAD_LIBS@
+
+if ENABLE_SAFESTACK
+AM_CFLAGS+=	-fsanitize=safe-stack
+endif
+
 CLEANFILES=*.gcda *.gcno

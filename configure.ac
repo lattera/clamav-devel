@@ -126,6 +126,7 @@ m4_include([m4/reorganization/llvm.m4])
 m4_include([m4/reorganization/sha_collect.m4])
 m4_include([m4/reorganization/yara.m4])
 m4_include([m4/reorganization/libfreshclam.m4])
+m4_include([m4/reorganization/safestack.m4])
 
 m4_include([m4/reorganization/prelude.m4])
 

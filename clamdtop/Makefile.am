@@ -13,6 +13,11 @@ clamdtop_SOURCES = \
 AM_CFLAGS=@WERR_CFLAGS@
 AM_CPPFLAGS = -I$(top_srcdir) -I$(top_srcdir)/shared -I$(top_srcdir)/libclamav @SSL_CPPFLAGS@ @CURSES_CPPFLAGS@ @JSON_CPPFLAGS@ @PCRE_CPPFLAGS@
 clamdtop_LDADD = @SSL_LDFLAGS@ @SSL_LIBS@ @CURSES_LIBS@ $(top_builddir)/libclamav/libclamav_internal_utils_nothreads.la
+
+if ENABLE_SAFESTACK
+AM_CFLAGS+=	-fsanitize=safe-stack
+endif
+
 endif
 DEFS = @DEFS@ -DCL_NOTHREADS -DCL_NOLIBCLAMAV
 EXTRA_DIST = clamdtop.c

@@ -29,6 +29,10 @@ clamconf_SOURCES = \
 
 AM_CFLAGS=@WERR_CFLAGS@ @SSL_CPPFLAGS@
 
+if ENABLE_SAFESTACK
+AM_CFLAGS+=	-fsanitize=safe-stack
+endif
+
 DEFS = @DEFS@ -DCL_NOTHREADS
 AM_CPPFLAGS = @CLAMCONF_CPPFLAGS@ -I$(top_srcdir) -I$(top_srcdir)/shared -I$(top_srcdir)/libclamav\
 	      @JSON_CPPFLAGS@ @PCRE_CPPFLAGS@\

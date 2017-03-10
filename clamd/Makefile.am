@@ -58,6 +58,10 @@ clamd_SOURCES = \
 
 AM_CFLAGS=@WERR_CFLAGS@
 
+if ENABLE_SAFESTACK
+AM_CFLAGS+=	-fsanitize=safe-stack
+endif
+
 if INSTALL_SYSTEMD_UNITS
 systemdsystemunit_DATA = clamav-daemon.socket clamav-daemon.service
 endif

@@ -40,8 +40,12 @@ clamdscan_SOURCES = \
     client.h
 
 AM_CFLAGS=@WERR_CFLAGS@
+
+if ENABLE_SAFESTACK
+AM_CFLAGS+=	-fsanitize=safe-stack
 endif
 
+endif
 
 DEFS = @DEFS@ -DCL_NOTHREADS -DCL_NOLIBCLAMAV
 AM_CPPFLAGS = @JSON_CPPFLAGS@ @PCRE_CPPFLAGS@ -I$(top_srcdir) -I$(top_srcdir)/clamscan -I$(top_srcdir)/shared -I$(top_srcdir)/libclamav @SSL_CPPFLAGS@ @CLAMDSCAN_CPPFLAGS@

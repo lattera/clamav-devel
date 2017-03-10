@@ -40,4 +40,8 @@ DEFS = @DEFS@ -DCL_NOTHREADS
 LIBS = $(top_builddir)/libclamav/libclamav.la @THREAD_LIBS@ @CLAMSCAN_LIBS@
 AM_CPPFLAGS = -I$(top_srcdir) -I$(top_srcdir)/shared -I$(top_srcdir)/libclamav @SSL_CPPFLAGS@ @JSON_CPPFLAGS@ @PCRE_CPPFLAGS@ @CLAMSCAN_CPPFLAGS@
 
+if ENABLE_SAFESTACK
+AM_CFLAGS+=	-fsanitize=safe-stack
+endif
+
 CLEANFILES=*.gcda *.gcno
